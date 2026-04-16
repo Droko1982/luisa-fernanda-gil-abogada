@@ -1,0 +1,16 @@
+{
+  "name": "Daniel Caicedo - Abogado Especialista en Derecho Administrativo",
+  "short_name": "DC Abogado",
+  "description": "Asesoría jurídica en Derecho Administrativo - Armenia, Quindío, Colombia",
+  "start_url": "/daniel-caicedo-abogado/",
+  "display": "standalone",
+  "background_color": "#0A0F1C",
+  "theme_color": "#D4A017",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

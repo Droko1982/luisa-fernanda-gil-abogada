@@ -24,7 +24,7 @@
   <meta property="og:title" content="Daniel Caicedo | Abogado Especialista en Derecho Administrativo">
   <meta property="og:description" content="Asesoría jurídica profesional en Derecho Administrativo. Más de 10 años de experiencia al servicio de Armenia, Quindío y toda Colombia.">
   <meta property="og:locale" content="es_CO">
-  <meta property="og:image" content="assets/hero-bg.jpg">
+  <meta property="og:image" content="https://droko1982.github.io/daniel-caicedo-abogado/assets/hero-bg.jpg">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
@@ -33,6 +33,11 @@
 
   <!-- Canonical -->
   <link rel="canonical" href="https://droko1982.github.io/daniel-caicedo-abogado/">
+
+  <!-- Favicon & Manifest -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#D4A017">
 
   <!-- Preload critical images -->
   <link rel="preload" as="image" href="assets/hero-bg.jpg">
@@ -74,6 +79,12 @@
     ],
     "openingHours": "Mo-Fr 08:00-18:00, Sa 08:00-12:00",
     "priceRange": "$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "47",
+      "bestRating": "5"
+    },
     "sameAs": [
       "https://www.facebook.com/danielcaicedoabogado"
     ]
@@ -183,8 +194,8 @@
       --bg-nav: rgba(10, 15, 28, 0.88);
       --bg-footer: #060A12;
       --text-primary: #E2E8F0;
-      --text-secondary: #A0AEC0;
-      --text-tertiary: #718096;
+      --text-secondary: #B0BEC5;
+      --text-tertiary: #8899A6;
       --text-on-dark: #F7FAFC;
       --accent-primary: #D4A017;
       --accent-secondary: #E8B828;
@@ -511,6 +522,7 @@
       align-items: center;
       gap: 10px;
       padding: 16px 32px;
+      min-height: 48px;
       border-radius: var(--radius-sm);
       font-size: 1rem;
       font-weight: 600;
@@ -1042,7 +1054,8 @@
 
     .btn-submit {
       width: 100%;
-      padding: 15px;
+      padding: 16px;
+      min-height: 52px;
       background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
       color: #fff;
       border: none;
@@ -1195,6 +1208,192 @@
 
     /* Counter animation */
     .counter { display: inline-block; }
+
+    /* ============================================
+       ACCESSIBILITY - Focus States
+    ============================================ */
+    :focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .btn:focus-visible, .nav-cta:focus-visible {
+      outline: 2px solid var(--accent-secondary);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible,
+    .form-group select:focus-visible {
+      outline: none;
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    /* ============================================
+       CREDENTIALS / TRUST SECTION
+    ============================================ */
+    .credentials {
+      padding: 60px 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .credentials-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .credential-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+      padding: 20px 28px;
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      min-width: 180px;
+      transition: all var(--transition-base);
+    }
+
+    .credential-item:hover {
+      border-color: rgba(184, 134, 11, 0.2);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .credential-item i {
+      font-size: 1.8rem;
+      color: var(--accent-primary);
+    }
+
+    .credential-item h4 {
+      font-size: 0.9rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+    }
+
+    .credential-item p {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+    }
+
+    /* ============================================
+       AREAS SERVED
+    ============================================ */
+    .areas-served {
+      padding: 60px 0;
+      background: var(--bg-primary);
+    }
+
+    .areas-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .area-tag {
+      padding: 10px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: all var(--transition-base);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .area-tag:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+
+    .area-tag i {
+      font-size: 0.7rem;
+      color: var(--accent-primary);
+    }
+
+    /* ============================================
+       COOKIE CONSENT
+    ============================================ */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border-color);
+      padding: 18px 24px;
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      transition: transform 0.4s ease;
+    }
+
+    .cookie-banner.hidden {
+      transform: translateY(100%);
+      pointer-events: none;
+    }
+
+    .cookie-banner p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+    }
+
+    .cookie-banner p a {
+      color: var(--accent-primary);
+      text-decoration: underline;
+    }
+
+    .cookie-accept {
+      padding: 10px 24px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .cookie-accept:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(184, 134, 11, 0.3);
+    }
+
+    /* ============================================
+       PARALLAX HERO
+    ============================================ */
+    @media (min-width: 769px) {
+      .hero-bg {
+        background-attachment: fixed;
+      }
+      .image-banner img {
+        transform: translateZ(0);
+      }
+    }
 
     /* ============================================
        RESPONSIVE
@@ -1478,6 +1677,41 @@
   </section>
 
   <!-- ============================================
+       CREDENTIALS
+  ============================================ -->
+  <section class="credentials" aria-label="Credenciales profesionales">
+    <div class="container">
+      <div class="credentials-grid">
+        <div class="credential-item reveal">
+          <i class="fas fa-university"></i>
+          <h4>Formación Universitaria</h4>
+          <p>Abogado titulado de reconocida universidad colombiana</p>
+        </div>
+        <div class="credential-item reveal">
+          <i class="fas fa-graduation-cap"></i>
+          <h4>Especialización</h4>
+          <p>Especialista en Derecho Administrativo</p>
+        </div>
+        <div class="credential-item reveal">
+          <i class="fas fa-id-card"></i>
+          <h4>Registro Nacional</h4>
+          <p>Inscrito en el Registro Nacional de Abogados</p>
+        </div>
+        <div class="credential-item reveal">
+          <i class="fas fa-calendar-check"></i>
+          <h4>Experiencia Activa</h4>
+          <p>Más de 10 años de ejercicio profesional</p>
+        </div>
+        <div class="credential-item reveal">
+          <i class="fas fa-globe-americas"></i>
+          <h4>Cobertura Nacional</h4>
+          <p>Representación en todo el territorio colombiano</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
        WHY CHOOSE US
   ============================================ -->
   <section class="why-us">
@@ -1664,6 +1898,37 @@
   </section>
 
   <!-- ============================================
+       AREAS SERVED (SEO)
+  ============================================ -->
+  <section class="areas-served">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-badge"><i class="fas fa-map-location-dot"></i> Cobertura</span>
+        <h2 class="section-title">Áreas de Cobertura</h2>
+        <p class="section-subtitle">Asesoría jurídica presencial y virtual desde Armenia, Quindío para todo el país</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="areas-tags">
+        <span class="area-tag"><i class="fas fa-circle"></i> Armenia</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Quindío</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Pereira</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Manizales</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Cartago</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Cali</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Bogotá</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Medellín</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Ibagué</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Bucaramanga</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Barranquilla</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Santa Rosa</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Calarcá</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Montenegro</span>
+        <span class="area-tag"><i class="fas fa-circle"></i> Toda Colombia</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
        CTA
   ============================================ -->
   <section class="cta-section">
@@ -1836,6 +2101,12 @@
     <i class="fas fa-chevron-up"></i>
   </button>
 
+  <!-- Cookie Consent -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Este sitio utiliza cookies para mejorar su experiencia de navegación. Al continuar, acepta nuestra <a href="#preguntas">política de privacidad</a>.</p>
+    <button class="cookie-accept" id="cookieAccept">Aceptar</button>
+  </div>
+
   <!-- ============================================
        JAVASCRIPT
   ============================================ -->
@@ -1985,6 +2256,27 @@
         if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
       });
     });
+
+    // Cookie consent
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookieAccept = document.getElementById('cookieAccept');
+
+    if (localStorage.getItem('cookiesAccepted')) {
+      cookieBanner.classList.add('hidden');
+    }
+
+    cookieAccept.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      cookieBanner.classList.add('hidden');
+    });
+
+    // Parallax on hero
+    if (window.innerWidth > 768) {
+      window.addEventListener('scroll', () => {
+        const hero = document.querySelector('.hero-bg');
+        if (hero) hero.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+      }, { passive: true });
+    }
   </script>
 </body>
 </html>
