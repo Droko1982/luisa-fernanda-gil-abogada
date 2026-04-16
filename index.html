@@ -274,6 +274,18 @@
     a { text-decoration: none; color: inherit; transition: color var(--transition-fast); }
     ul { list-style: none; }
 
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      z-index: 1001;
+      transition: width 0.1s linear;
+    }
+
     /* Skip to content */
     .skip-link {
       position: absolute;
@@ -1823,6 +1835,9 @@
 </head>
 
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <!-- Skip to content -->
   <a href="#main-content" class="skip-link">Ir al contenido principal</a>
 
@@ -1931,7 +1946,7 @@
       <div class="about-grid">
         <div class="about-image-wrapper reveal">
           <div class="about-image">
-            <img src="assets/about-portrait.jpg" alt="Consulta jurídica profesional - Dr. Daniel Caicedo asesorando a un cliente en su oficina" loading="lazy">
+            <img src="assets/about-meeting.jpg" alt="Equipo profesional del Dr. Daniel Caicedo en consulta jurídica con clientes en Armenia, Quindío" loading="lazy">
           </div>
           <div class="about-floating-card">
             <div class="icon"><i class="fas fa-award"></i></div>
@@ -2141,11 +2156,11 @@
        IMAGE BANNER
   ============================================ -->
   <div class="image-banner reveal">
-    <img src="assets/office-bg.jpg" alt="Balanza de la justicia - símbolo del derecho y la equidad" loading="lazy">
+    <img src="assets/colombia-coffee.jpg" alt="Café del Quindío, región del Eje Cafetero colombiano - Armenia, Quindío" loading="lazy">
     <div class="image-banner-content">
       <div>
-        <blockquote>"La justicia no es solamente una virtud del Estado, es el derecho fundamental de cada ciudadano."</blockquote>
-        <cite>— Dr. Daniel Caicedo, Abogado</cite>
+        <blockquote>"Desde el corazón del Eje Cafetero, defendemos los derechos de los colombianos con la misma fuerza y dedicación que nuestra tierra le entrega al mundo."</blockquote>
+        <cite>— Dr. Daniel Caicedo, Abogado — Armenia, Quindío</cite>
       </div>
     </div>
   </div>
@@ -2267,7 +2282,7 @@
 
         <article class="blog-card reveal">
           <div class="blog-card-image">
-            <img src="assets/blog-4.jpg" alt="Documentos legales y mazo de juez - silencio administrativo" loading="lazy">
+            <img src="assets/handshake-legal.jpg" alt="Abogado y cliente estrechando manos tras consulta sobre silencio administrativo" loading="lazy">
             <span class="blog-card-tag">Administrativo</span>
           </div>
           <div class="blog-card-body">
@@ -2287,7 +2302,7 @@
 
         <article class="blog-card reveal">
           <div class="blog-card-image">
-            <img src="assets/blog-5.jpg" alt="Balanza de justicia - reparación directa contra el Estado" loading="lazy">
+            <img src="assets/blog-colombia-1.jpg" alt="Equipo legal unido trabajando en caso de reparación directa contra el Estado colombiano" loading="lazy">
             <span class="blog-card-tag">Reparación</span>
           </div>
           <div class="blog-card-body">
@@ -2307,7 +2322,7 @@
 
         <article class="blog-card reveal">
           <div class="blog-card-image">
-            <img src="assets/blog-6.jpg" alt="Consulta jurídica - proceso disciplinario en Colombia" loading="lazy">
+            <img src="assets/blog-colombia-2.jpg" alt="Reunión de abogados discutiendo proceso disciplinario en derecho administrativo colombiano" loading="lazy">
             <span class="blog-card-tag">Disciplinario</span>
           </div>
           <div class="blog-card-body">
@@ -2648,15 +2663,21 @@
       themeIcon.className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     });
 
-    // Navbar scroll
+    // Navbar scroll + progress bar
     const navbar = document.getElementById('navbar');
     const backToTop = document.getElementById('backToTop');
+    const scrollProgress = document.getElementById('scrollProgress');
 
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
       navbar.classList.toggle('scrolled', y > 50);
       backToTop.classList.toggle('visible', y > 600);
-    });
+
+      // Progress bar
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (y / docHeight) * 100;
+      scrollProgress.style.width = scrollPercent + '%';
+    }, { passive: true });
 
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
