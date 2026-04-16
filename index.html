@@ -50,6 +50,18 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Google Search Console Verification — replace content with your actual verification code -->
+  <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE_HERE">
+
+  <!-- Google Analytics (GA4) — replace G-XXXXXXXXXX with your actual GA4 Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
   <!-- Schema.org LegalService -->
   <script type="application/ld+json">
   {
@@ -87,6 +99,40 @@
     },
     "sameAs": [
       "https://www.facebook.com/danielcaicedoabogado"
+    ]
+  }
+  </script>
+
+  <!-- Schema.org Blog Articles -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog Jurídico - Daniel Caicedo Abogado",
+    "url": "https://droko1982.github.io/daniel-caicedo-abogado/#blog",
+    "description": "Artículos sobre Derecho Administrativo, tutelas, contratación estatal y derechos de petición en Colombia",
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "¿Qué es un Derecho de Petición y Cómo Presentarlo en Colombia?",
+        "datePublished": "2026-04-15",
+        "author": { "@type": "Person", "name": "Daniel Caicedo" },
+        "description": "Guía completa sobre el derecho de petición en Colombia: plazos, requisitos y qué hacer si no le responden."
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Acción de Tutela: Cuándo, Cómo y Ante Quién Presentarla",
+        "datePublished": "2026-04-08",
+        "author": { "@type": "Person", "name": "Daniel Caicedo" },
+        "description": "Todo sobre la acción de tutela en Colombia: requisitos, plazos de respuesta y casos en los que procede."
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Contratación Estatal en Colombia: Lo Que Todo Contratista Debe Saber",
+        "datePublished": "2026-03-28",
+        "author": { "@type": "Person", "name": "Daniel Caicedo" },
+        "description": "Derechos y obligaciones de los contratistas del Estado bajo la Ley 80 de 1993 y Ley 1150 de 2007."
+      }
     ]
   }
   </script>
@@ -1384,6 +1430,111 @@
     }
 
     /* ============================================
+       BLOG / ARTICLES
+    ============================================ */
+    .blog {
+      padding: var(--section-padding);
+      background: var(--bg-secondary);
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .blog-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .blog-card-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .blog-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .blog-card:hover .blog-card-image img {
+      transform: scale(1.08);
+    }
+
+    .blog-card-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .blog-card-body {
+      padding: 24px;
+    }
+
+    .blog-card-date {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .blog-card-body h3 {
+      font-size: 1.1rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.4;
+      transition: color var(--transition-fast);
+    }
+
+    .blog-card:hover .blog-card-body h3 {
+      color: var(--accent-primary);
+    }
+
+    .blog-card-body p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .blog-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+      transition: gap var(--transition-fast);
+    }
+
+    .blog-card-link:hover {
+      gap: 10px;
+    }
+
+    /* ============================================
        PARALLAX HERO
     ============================================ */
     @media (min-width: 769px) {
@@ -1406,6 +1557,7 @@
       .about-grid { gap: 48px; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .hero-decoration { display: none; }
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
@@ -1455,6 +1607,7 @@
       .about-highlights { grid-template-columns: 1fr; }
       .cta-buttons { flex-direction: column; align-items: center; }
       .image-banner { height: 260px; }
+      .blog-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 480px) {
@@ -1496,6 +1649,7 @@
         <a href="#servicios">Servicios</a>
         <a href="#proceso">Proceso</a>
         <a href="#testimonios">Testimonios</a>
+        <a href="#blog">Blog</a>
         <a href="#contacto">Contacto</a>
         <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema claro/oscuro">
           <i class="fas fa-sun" id="themeIcon"></i>
@@ -1840,6 +1994,60 @@
   </section>
 
   <!-- ============================================
+       BLOG / ARTICLES
+  ============================================ -->
+  <section class="blog" id="blog">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-badge"><i class="fas fa-newspaper"></i> Blog Jurídico</span>
+        <h2 class="section-title">Artículos y Recursos Legales</h2>
+        <p class="section-subtitle">Información útil sobre Derecho Administrativo para ciudadanos y empresas en Colombia</p>
+        <div class="gold-line"></div>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card reveal">
+          <div class="blog-card-image">
+            <img src="assets/blog-1.jpg" alt="Balanza de la justicia y mazo - derecho de petición en Colombia" loading="lazy">
+            <span class="blog-card-tag">Guía Legal</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 15 de Abril, 2026</div>
+            <h3>¿Qué es un Derecho de Petición y Cómo Presentarlo en Colombia?</h3>
+            <p>El derecho de petición es una herramienta fundamental que le permite a cualquier ciudadano solicitar información o hacer requerimientos a entidades públicas. La Constitución colombiana lo garantiza en su artículo 23. Conozca los plazos, requisitos y qué hacer si no le responden.</p>
+            <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20derecho%20de%20petici%C3%B3n%20y%20necesito%20asesor%C3%ADa." class="blog-card-link" target="_blank" rel="noopener">Consultar sobre este tema <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="blog-card reveal">
+          <div class="blog-card-image">
+            <img src="assets/blog-2.jpg" alt="Mazo y balanza - acción de tutela en Colombia" loading="lazy">
+            <span class="blog-card-tag">Derechos</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 8 de Abril, 2026</div>
+            <h3>Acción de Tutela: Cuándo, Cómo y Ante Quién Presentarla</h3>
+            <p>La tutela es el mecanismo más efectivo para proteger sus derechos fundamentales cuando son vulnerados por autoridades públicas o particulares. Conozca los requisitos, plazos de respuesta (10 días hábiles) y casos en los que procede esta acción constitucional.</p>
+            <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20tutelas%20y%20necesito%20orientaci%C3%B3n." class="blog-card-link" target="_blank" rel="noopener">Consultar sobre este tema <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <article class="blog-card reveal">
+          <div class="blog-card-image">
+            <img src="assets/blog-3.jpg" alt="Abogados revisando contrato estatal en Colombia" loading="lazy">
+            <span class="blog-card-tag">Contratos</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 28 de Marzo, 2026</div>
+            <h3>Contratación Estatal en Colombia: Lo Que Todo Contratista Debe Saber</h3>
+            <p>La Ley 80 de 1993 y la Ley 1150 de 2007 regulan la contratación pública en Colombia. Si usted es contratista o proveedor del Estado, conozca sus derechos y obligaciones, las modalidades de selección y cómo protegerse ante incumplimientos de la entidad contratante.</p>
+            <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20contrataci%C3%B3n%20estatal%20y%20necesito%20asesor%C3%ADa." class="blog-card-link" target="_blank" rel="noopener">Consultar sobre este tema <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
        FAQ
   ============================================ -->
   <section class="faq" id="preguntas">
@@ -2072,6 +2280,7 @@
           <a href="#nosotros">Sobre Nosotros</a>
           <a href="#proceso">Cómo Trabajamos</a>
           <a href="#testimonios">Testimonios</a>
+          <a href="#blog">Blog Jurídico</a>
           <a href="#preguntas">Preguntas Frecuentes</a>
         </div>
         <div class="footer-col">
