@@ -1535,6 +1535,206 @@
     }
 
     /* ============================================
+       WHATSAPP CHAT WIDGET
+    ============================================ */
+    .wa-widget {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px) scale(0.9);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .wa-widget.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+    }
+
+    .wa-widget-box {
+      width: 340px;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .wa-widget-header {
+      background: #075E54;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .wa-widget-avatar {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .wa-widget-header-info h4 {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+    }
+
+    .wa-widget-header-info p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+    }
+
+    .wa-widget-close {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .wa-widget-body {
+      padding: 20px;
+      background: var(--bg-secondary);
+    }
+
+    .wa-widget-bubble {
+      background: var(--bg-card);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md);
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+      position: relative;
+      border: 1px solid var(--border-color);
+    }
+
+    .wa-widget-bubble::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -8px;
+      width: 0;
+      height: 0;
+      border-top: 8px solid var(--border-color);
+      border-left: 8px solid transparent;
+    }
+
+    .wa-widget-time {
+      text-align: right;
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      margin-top: 6px;
+    }
+
+    .wa-widget-footer {
+      padding: 14px 20px;
+    }
+
+    .wa-widget-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: var(--font-body);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      min-height: 48px;
+      text-decoration: none;
+    }
+
+    .wa-widget-btn:hover {
+      background: #1FB855;
+      transform: translateY(-1px);
+    }
+
+    /* ============================================
+       BLOG SHARE BUTTONS
+    ============================================ */
+    .blog-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .blog-share {
+      display: flex;
+      gap: 6px;
+    }
+
+    .blog-share a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-tertiary);
+      font-size: 0.75rem;
+      transition: all 0.2s ease;
+    }
+
+    .blog-share a:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================
+       PRINT STYLES
+    ============================================ */
+    @media print {
+      .navbar, .whatsapp-float, .wa-widget, .back-to-top,
+      .cookie-banner, .preloader, .mobile-overlay,
+      .hero-buttons, .cta-section, .blog-share,
+      .contact-form, .contact-map, .footer-social,
+      .theme-toggle, .nav-cta, .mobile-toggle { display: none !important; }
+
+      body { background: #fff !important; color: #000 !important; font-size: 12pt; }
+      .hero { min-height: auto !important; padding: 40px 0 !important; }
+      .hero-bg::after { background: rgba(255,255,255,0.85) !important; }
+      .hero h1, .hero h1 .accent { color: #000 !important; -webkit-text-fill-color: #000 !important; }
+      .hero-description { color: #333 !important; }
+
+      section { padding: 30px 0 !important; break-inside: avoid; }
+      h2, h3 { color: #000 !important; }
+      p, .about-text, .service-card p { color: #333 !important; }
+
+      .service-card, .why-card, .testimonial-card, .blog-card,
+      .faq-item, .contact-card, .credential-item {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        background: #fff !important;
+      }
+
+      .services-grid, .blog-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      a[href^="https://wa.me"]::after { content: " (WhatsApp: +57 313 624 7663)"; font-size: 10pt; }
+      a[href^="mailto:"]::after { content: " (" attr(href) ")"; font-size: 10pt; }
+    }
+
+    /* ============================================
        PARALLAX HERO
     ============================================ */
     @media (min-width: 769px) {
@@ -2014,7 +2214,14 @@
             <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 15 de Abril, 2026</div>
             <h3>¿Qué es un Derecho de Petición y Cómo Presentarlo en Colombia?</h3>
             <p>El derecho de petición es una herramienta fundamental que le permite a cualquier ciudadano solicitar información o hacer requerimientos a entidades públicas. La Constitución colombiana lo garantiza en su artículo 23. Conozca los plazos, requisitos y qué hacer si no le responden.</p>
-            <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20derecho%20de%20petici%C3%B3n%20y%20necesito%20asesor%C3%ADa." class="blog-card-link" target="_blank" rel="noopener">Consultar sobre este tema <i class="fas fa-arrow-right"></i></a>
+            <div class="blog-card-footer">
+              <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20derecho%20de%20petici%C3%B3n%20y%20necesito%20asesor%C3%ADa." class="blog-card-link" target="_blank" rel="noopener">Consultar <i class="fas fa-arrow-right"></i></a>
+              <div class="blog-share">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/?text=Art%C3%ADculo%20sobre%20Derecho%20de%20Petici%C3%B3n%20en%20Colombia%20https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/intent/tweet?text=Derecho%20de%20Petici%C3%B3n%20en%20Colombia&url=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en X"><i class="fab fa-x-twitter"></i></a>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -2026,8 +2233,15 @@
           <div class="blog-card-body">
             <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 8 de Abril, 2026</div>
             <h3>Acción de Tutela: Cuándo, Cómo y Ante Quién Presentarla</h3>
-            <p>La tutela es el mecanismo más efectivo para proteger sus derechos fundamentales cuando son vulnerados por autoridades públicas o particulares. Conozca los requisitos, plazos de respuesta (10 días hábiles) y casos en los que procede esta acción constitucional.</p>
-            <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20tutelas%20y%20necesito%20orientaci%C3%B3n." class="blog-card-link" target="_blank" rel="noopener">Consultar sobre este tema <i class="fas fa-arrow-right"></i></a>
+            <p>La tutela es el mecanismo más efectivo para proteger sus derechos fundamentales cuando son vulnerados. Conozca los requisitos, plazos de respuesta (10 días hábiles) y casos en que procede.</p>
+            <div class="blog-card-footer">
+              <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20tutelas%20y%20necesito%20orientaci%C3%B3n." class="blog-card-link" target="_blank" rel="noopener">Consultar <i class="fas fa-arrow-right"></i></a>
+              <div class="blog-share">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/?text=Acci%C3%B3n%20de%20Tutela%20en%20Colombia%20https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/intent/tweet?text=Acci%C3%B3n%20de%20Tutela&url=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en X"><i class="fab fa-x-twitter"></i></a>
+              </div>
+            </div>
           </div>
         </article>
 
@@ -2039,8 +2253,75 @@
           <div class="blog-card-body">
             <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 28 de Marzo, 2026</div>
             <h3>Contratación Estatal en Colombia: Lo Que Todo Contratista Debe Saber</h3>
-            <p>La Ley 80 de 1993 y la Ley 1150 de 2007 regulan la contratación pública en Colombia. Si usted es contratista o proveedor del Estado, conozca sus derechos y obligaciones, las modalidades de selección y cómo protegerse ante incumplimientos de la entidad contratante.</p>
-            <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20contrataci%C3%B3n%20estatal%20y%20necesito%20asesor%C3%ADa." class="blog-card-link" target="_blank" rel="noopener">Consultar sobre este tema <i class="fas fa-arrow-right"></i></a>
+            <p>La Ley 80 de 1993 y la Ley 1150 de 2007 regulan la contratación pública. Conozca derechos, obligaciones y cómo protegerse ante incumplimientos de la entidad contratante.</p>
+            <div class="blog-card-footer">
+              <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20le%C3%AD%20su%20art%C3%ADculo%20sobre%20contrataci%C3%B3n%20estatal%20y%20necesito%20asesor%C3%ADa." class="blog-card-link" target="_blank" rel="noopener">Consultar <i class="fas fa-arrow-right"></i></a>
+              <div class="blog-share">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/?text=Contrataci%C3%B3n%20Estatal%20en%20Colombia%20https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/intent/tweet?text=Contrataci%C3%B3n%20Estatal&url=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en X"><i class="fab fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card reveal">
+          <div class="blog-card-image">
+            <img src="assets/blog-4.jpg" alt="Documentos legales y mazo de juez - silencio administrativo" loading="lazy">
+            <span class="blog-card-tag">Administrativo</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 15 de Marzo, 2026</div>
+            <h3>Silencio Administrativo: Qué Hacer Cuando el Estado No Responde</h3>
+            <p>Cuando una entidad pública no responde sus solicitudes en los plazos legales, opera el silencio administrativo. Conozca la diferencia entre silencio positivo y negativo, y cómo usar esta figura a su favor según el CPACA.</p>
+            <div class="blog-card-footer">
+              <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20tengo%20un%20caso%20de%20silencio%20administrativo%20y%20necesito%20asesor%C3%ADa." class="blog-card-link" target="_blank" rel="noopener">Consultar <i class="fas fa-arrow-right"></i></a>
+              <div class="blog-share">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/?text=Silencio%20Administrativo%20en%20Colombia%20https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/intent/tweet?text=Silencio%20Administrativo&url=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en X"><i class="fab fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card reveal">
+          <div class="blog-card-image">
+            <img src="assets/blog-5.jpg" alt="Balanza de justicia - reparación directa contra el Estado" loading="lazy">
+            <span class="blog-card-tag">Reparación</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 2 de Marzo, 2026</div>
+            <h3>Reparación Directa: Cómo Demandar al Estado por Daños y Perjuicios</h3>
+            <p>Si el Estado le causó un daño por falla en el servicio, riesgo excepcional o daño especial, usted tiene derecho a ser indemnizado. Conozca los requisitos para interponer una demanda de reparación directa y los plazos de caducidad (2 años).</p>
+            <div class="blog-card-footer">
+              <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20necesito%20asesor%C3%ADa%20sobre%20reparaci%C3%B3n%20directa%20contra%20el%20Estado." class="blog-card-link" target="_blank" rel="noopener">Consultar <i class="fas fa-arrow-right"></i></a>
+              <div class="blog-share">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/?text=Reparaci%C3%B3n%20Directa%20contra%20el%20Estado%20https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/intent/tweet?text=Reparaci%C3%B3n%20Directa&url=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en X"><i class="fab fa-x-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card reveal">
+          <div class="blog-card-image">
+            <img src="assets/blog-6.jpg" alt="Consulta jurídica - proceso disciplinario en Colombia" loading="lazy">
+            <span class="blog-card-tag">Disciplinario</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-date"><i class="fas fa-calendar-alt"></i> 18 de Febrero, 2026</div>
+            <h3>Proceso Disciplinario: Sus Derechos Como Servidor Público o Contratista</h3>
+            <p>Si enfrenta un proceso disciplinario ante la Procuraduría o una oficina de control interno, conozca sus garantías procesales: derecho a la defensa, presunción de inocencia, doble instancia y los plazos para cada etapa del proceso.</p>
+            <div class="blog-card-footer">
+              <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Caicedo%2C%20enfrento%20un%20proceso%20disciplinario%20y%20necesito%20defensa%20legal." class="blog-card-link" target="_blank" rel="noopener">Consultar <i class="fas fa-arrow-right"></i></a>
+              <div class="blog-share">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/?text=Proceso%20Disciplinario%20en%20Colombia%20https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/intent/tweet?text=Proceso%20Disciplinario&url=https://droko1982.github.io/daniel-caicedo-abogado/%23blog" target="_blank" rel="noopener" aria-label="Compartir en X"><i class="fab fa-x-twitter"></i></a>
+              </div>
+            </div>
           </div>
         </article>
       </div>
@@ -2199,8 +2480,10 @@
               </div>
             </div>
           </div>
-          <div class="contact-map">
-            <iframe src="https://maps.google.com/maps?q=Santa+Rosa+Quindio+Colombia&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de la oficina del Dr. Daniel Caicedo"></iframe>
+          <div class="contact-map" id="mapContainer" data-src="https://maps.google.com/maps?q=Santa+Rosa+Quindio+Colombia&t=&z=13&ie=UTF8&iwloc=&output=embed">
+            <div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-tertiary);font-size:0.9rem;gap:8px;cursor:pointer" onclick="loadMap()">
+              <i class="fas fa-map-marker-alt" style="color:var(--accent-primary)"></i> Clic para cargar el mapa
+            </div>
           </div>
         </div>
         <div class="contact-form reveal">
@@ -2300,10 +2583,35 @@
     </div>
   </footer>
 
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Daniel%20Caicedo%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20asesor%C3%ADa%20jur%C3%ADdica%20en%20derecho%20administrativo." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contáctenos por WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
+  <!-- WhatsApp Chat Widget -->
+  <div class="wa-widget" id="waWidget">
+    <div class="wa-widget-box">
+      <div class="wa-widget-header">
+        <div class="wa-widget-avatar">DC</div>
+        <div class="wa-widget-header-info">
+          <h4>Dr. Daniel Caicedo</h4>
+          <p>Responde en menos de 2 horas</p>
+        </div>
+        <button class="wa-widget-close" id="waClose" aria-label="Cerrar chat"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="wa-widget-body">
+        <div class="wa-widget-bubble">
+          Hola, soy el Dr. Daniel Caicedo. ¿En qué puedo ayudarle hoy? Cuénteme sobre su caso y le orientaré sin compromiso.
+        </div>
+        <div class="wa-widget-time">Ahora</div>
+      </div>
+      <div class="wa-widget-footer">
+        <a href="https://wa.me/573136247663?text=Hola%20Dr.%20Daniel%20Caicedo%2C%20estoy%20interesado%20en%20sus%20servicios%20de%20asesor%C3%ADa%20jur%C3%ADdica%20en%20derecho%20administrativo." class="wa-widget-btn" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> Iniciar Conversación
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp Float Button -->
+  <button class="whatsapp-float" id="waToggle" aria-label="Abrir chat de WhatsApp">
+    <i class="fab fa-whatsapp" id="waToggleIcon"></i>
+  </button>
 
   <!-- Back to top -->
   <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
@@ -2486,6 +2794,51 @@
         if (hero) hero.style.transform = `translateY(${window.scrollY * 0.3}px)`;
       }, { passive: true });
     }
+
+    // WhatsApp chat widget
+    const waToggle = document.getElementById('waToggle');
+    const waWidget = document.getElementById('waWidget');
+    const waClose = document.getElementById('waClose');
+    const waIcon = document.getElementById('waToggleIcon');
+
+    waToggle.addEventListener('click', () => {
+      const isOpen = waWidget.classList.toggle('open');
+      waIcon.className = isOpen ? 'fas fa-times' : 'fab fa-whatsapp';
+    });
+
+    waClose.addEventListener('click', () => {
+      waWidget.classList.remove('open');
+      waIcon.className = 'fab fa-whatsapp';
+    });
+
+    // Auto-show widget after 30 seconds on first visit
+    if (!sessionStorage.getItem('waShown')) {
+      setTimeout(() => {
+        waWidget.classList.add('open');
+        waIcon.className = 'fas fa-times';
+        sessionStorage.setItem('waShown', 'true');
+      }, 30000);
+    }
+
+    // Lazy load Google Maps
+    function loadMap() {
+      const container = document.getElementById('mapContainer');
+      const src = container.dataset.src;
+      container.innerHTML = `<iframe src="${src}" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de la oficina del Dr. Daniel Caicedo" style="width:100%;height:100%;border:0;filter:grayscale(30%)"></iframe>`;
+    }
+
+    // Auto-load map when scrolled into view
+    const mapObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadMap();
+          mapObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const mapEl = document.getElementById('mapContainer');
+    if (mapEl) mapObserver.observe(mapEl);
   </script>
 </body>
 </html>
